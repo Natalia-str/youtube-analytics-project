@@ -41,19 +41,26 @@ class Channel:
 
 
     @property
-    def subscriberCount(self):
+    def subscriber_count(self):
         """количество подписчиков"""
         return self.channel["items"][0]["statistics"]["subscriberCount"]
 
     @property
-    def viewCount(self):
+    def view_count(self):
         """общее количество просмотров"""
         return self.channel["items"][0]["statistics"]["viewCount"]
 
     @property
-    def videoCount(self):
+    def video_count(self):
         """количество видео"""
         return self.channel["items"][0]["statistics"]["videoCount"]
+
+    @classmethod
+    def get_service(cls):
+        pass
+
+    def to_json():
+        pass
 
 
     def print_info(self) -> None:
@@ -65,4 +72,4 @@ vdud = Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
 print(vdud.title)
 print(vdud.channel_id)
 print(vdud.url)
-print(vdud.videoCount)
+print(vdud.video_count)
