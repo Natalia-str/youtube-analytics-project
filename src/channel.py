@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 from googleapiclient.discovery import build
 
 import isodate
@@ -57,7 +58,9 @@ class Channel:
 
     @classmethod
     def get_service(cls):
-        pass
+        response = requests.get("https://developers.google.com/youtube/v3/docs/channels/list?hl=ru#http-request")
+        print(response.status_code)
+        print(response.content)
 
     def to_json(self):
         """сохраняет в файл значения атрибутов экземпляра Channel"""
@@ -87,3 +90,4 @@ print(vdud.url)
 print(vdud.video_count)
 print(vdud.description)
 print(vdud.to_json())
+print(Channel.get_service())
