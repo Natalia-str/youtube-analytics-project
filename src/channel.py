@@ -74,7 +74,7 @@ class Channel:
         py_info = json.loads(info_1)
 
         with open('data_channel.json', 'w', encoding='utf-8') as f:
-            json.dump(py_info, f)
+            json.dump(py_info, f, indent=2, ensure_ascii=False)
 
 
 
