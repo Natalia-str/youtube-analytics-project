@@ -59,8 +59,24 @@ class Channel:
     def get_service(cls):
         pass
 
-    def to_json():
-        pass
+    def to_json(self):
+        """сохраняет в файл значения атрибутов экземпляра Channel"""
+        info = {'ID канала': self.__channel_id,
+                 'название канала': self.title,
+                 'описание канала': self.description,
+                 'ссылка на канал': self.url,
+                 'количество подписчиков': self.subscriber_count,
+                 'общее количество просмотров': self.view_count,
+                 'количество видео': self.video_count}
+
+        info_1 = json.dumps(info)
+
+        py_info = json.loads(info_1)
+
+        with open('data_channel.json', 'w', encoding='utf-8') as f:
+            json.dump(py_info, f)
+
+
 
 
     def print_info(self) -> None:
@@ -73,3 +89,5 @@ print(vdud.title)
 print(vdud.channel_id)
 print(vdud.url)
 print(vdud.video_count)
+print(vdud.description)
+print(vdud.to_json())
