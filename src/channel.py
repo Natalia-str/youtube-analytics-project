@@ -69,12 +69,8 @@ class Channel:
                  'общее количество просмотров': self.view_count,
                  'количество видео': self.video_count}
 
-        info_1 = json.dumps(info)
-
-        py_info = json.loads(info_1)
-
         with open('data_channel.json', 'w', encoding='utf-8') as f:
-            json.dump(py_info, f, indent=2, ensure_ascii=False)
+            json.dump(info, f, indent=2, ensure_ascii=False)
 
 
 
