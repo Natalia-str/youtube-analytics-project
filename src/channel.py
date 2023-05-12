@@ -30,6 +30,34 @@ class Channel:
     def __str__(self):
         return f'{self.title} ({self.url})'
 
+    def __add__(self, other):
+        """складываем количество подписчиков"""
+        return int(self.subscriber_count) + int(other.subscriber_count)
+
+    def __sub__(self, other):
+        """вычитаем количество подписчиков"""
+        return int(self.subscriber_count) - int(other.subscriber_count)
+
+    def __ge__(self, other):
+        """сравниваем по количеству подписчиков"""
+        return int(self.subscriber_count) >= int(other.subscriber_count)
+
+    def __gt__(self, other):
+        """сравниваем по количеству подписчиков"""
+        return int(self.subscriber_count) > int(other.subscriber_count)
+
+    def __le__(self, other):
+        """сравниваем по количеству подписчиков"""
+        return int(self.subscriber_count) <= int(other.subscriber_count)
+
+    def __lt__(self, other):
+        """сравниваем по количеству подписчиков"""
+        return int(self.subscriber_count) < int(other.subscriber_count)
+
+    def __eq__(self, other):
+        """сравниваем по количеству подписчиков"""
+        return int(self.subscriber_count) == int(other.subscriber_count)
+
     @property
     def channel_id(self):
         """ID канала"""
@@ -52,8 +80,8 @@ class Channel:
         info = json.dumps(self.channel, indent=2, ensure_ascii=False)
         return print(info)
 
-
-vdud = Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
+# redactsiya = Channel('UC1eFXmJNkjITxPFWTy6RsWg')
+# vdud = Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
 # print(vdud.title)
 # print(vdud.channel_id)
 # print(vdud.url)
@@ -61,4 +89,7 @@ vdud = Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
 # print(vdud.description)
 # print(vdud.to_json())
 # print(Channel.get_service())
-print(vdud)
+# print(vdud)
+# print(vdud + redactsiya)
+# print(vdud.subscriber_count)
+# print(redactsiya.subscriber_count)
