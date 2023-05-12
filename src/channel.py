@@ -1,9 +1,7 @@
 import json
 import os
-import requests
 from googleapiclient.discovery import build
 
-import isodate
 
 # YT_API_KEY скопирован из гугла и вставлен в переменные окружения
 api_key: str = os.getenv('YT_API_KEY')
