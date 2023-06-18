@@ -17,11 +17,20 @@ class Video:
     def __init__(self, id_video):
         """Экземпляр инициализируется id видео. Дальше все данные будут подтягиваться по API."""
         self.__id_video = id_video
-        self.video = youtube.videos().list(id=id_video, part='snippet,statistics').execute()
-        self.title = self.video["items"][0]["snippet"]["title"]
-        self.url = f"https://www.youtube.com/video/{self.__id_video}"
-        self.view_count = self.video["items"][0]["statistics"]["viewCount"]
-        self.like_count = self.video["items"][0]["statistics"]["likeCount"]
+        try:
+            self.video = youtube.videos().list(id=id_video, part='snippet,statistics').execute()
+            self.video["items"][0] is None
+        except IndexError:
+            self.title = None
+            self.url = None
+            self.view_count = None
+            self.like_count = None
+
+        else:
+            self.title = self.video["items"][0]["snippet"]["title"]
+            self.url = f"https://www.youtube.com/video/{self.__id_video}"
+            self.view_count = self.video["items"][0]["statistics"]["viewCount"]
+            self.like_count = self.video["items"][0]["statistics"]["likeCount"]
 
     def __str__(self):
         return self.title
@@ -50,10 +59,10 @@ class PLVideo(Video):
 
 
 # video1 = Video('9lO06Zxhu88')  # '9lO06Zxhu88' - это id видео из ютуб
-# # video2 = PLVideo('BBotskuyw_M', 'PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
-# print(video1.id_video)
-# video1.print_info()
-# print(video1.title)
+# # # video2 = PLVideo('BBotskuyw_M', 'PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
+# # print(video1.id_video)
+# # video1.print_info()
+# # print(video1.video)
 # print(video1.url)
 # print(video1.view_count)
 # print(video1.like_count)
